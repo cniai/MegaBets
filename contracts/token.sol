@@ -1,8 +1,10 @@
-//SPDX-License-Identifier: UNLICENSED
+//SPDX-License-Identifier: Apache License 2.0
 
 // Solidity files have to start with this pragma.
 // It will be used by the Solidity compiler to validate its version.
 pragma solidity ^0.8.0;
+
+import "hardhat/console.sol";
 
 
 // This is the main building block for smart contracts.
@@ -45,6 +47,9 @@ contract Token {
         // If `require`'s first argument evaluates to `false` then the
         // transaction will revert.
         require(balances[msg.sender] >= amount, "Not enough tokens");
+
+        console.log(
+        "Transferring from %s to %s %s tokens", msg.sender, to, amount);
 
         // Transfer the amount.
         balances[msg.sender] -= amount;
